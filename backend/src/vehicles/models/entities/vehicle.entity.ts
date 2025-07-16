@@ -7,7 +7,7 @@ export class VehicleEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ type: "varchar", nullable: false })
+    @Column({ type: "varchar", nullable: false, unique: true })
     plate: string;
 
     @Column({ type: "varchar", nullable: false })
