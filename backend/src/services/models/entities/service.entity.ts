@@ -9,7 +9,14 @@ export class ServiceEntity {
     @Column({ type: "varchar", nullable: false })
     description: string;
 
-    @Column({ type: "decimal", nullable: false })
+    @Column({
+        type: "decimal",
+        nullable: false,
+        transformer: {
+            to: (value: number) => value,
+            from: (value: string) => parseFloat(value),
+        },
+    })
     price: number;
 
     // --{ RELATIONS }--
