@@ -13,8 +13,6 @@ export const backendApi = axios.create({
 
 backendApi.interceptors.response.use(
     async (response) => {
-        console.log('response', response.data)
-
         if (typeof window !== "undefined") {
             const iziToast = (await import("izitoast")).default;
             if (!response.config?.customResponseInterceptor) {
@@ -36,8 +34,6 @@ backendApi.interceptors.response.use(
                 const result = error.config.customErrorInterceptor(error);
                 if (result) return result;
             }
-
-            console.log('deu erro')
 
             iziToast.error({
                 title: "Erro",
