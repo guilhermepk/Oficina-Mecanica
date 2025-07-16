@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <div className="flex items-center justify-center flex-col">
-      <h1 className="text-center my-[50px]"> Serviços </h1>
+      <h1 className="text-center my-[50px]"> Clientes </h1>
 
       <Suspense fallback={<p>Carregando...</p>}>
         <ClientList clients={clients} />
