@@ -13,7 +13,7 @@ export class ClientsService {
 
   async findAll(name?: string): Promise<ClientEntity[]> {
     return await tryCatch(async () => {
-      return await this.repository.find({ where: { name: ILike(name) } });
+      return await this.repository.find({ where: { name: name ? ILike(name) : undefined } });
     }, `Erro ao buscar todos os clientes`);
   }
 
