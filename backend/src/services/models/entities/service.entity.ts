@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { VehicleEntity } from "src/vehicles/models/entities/vehicle.entity";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({ name: 'services' })
 export class ServiceEntity {
@@ -10,4 +11,10 @@ export class ServiceEntity {
 
     @Column({ type: "decimal", nullable: false })
     price: number;
+
+    // --{ RELATIONS }--
+
+    @JoinColumn({ name: 'fk_vehicle' })
+    @ManyToOne(() => VehicleEntity, vehicle => vehicle.services)
+    vehicle: VehicleEntity;
 }
