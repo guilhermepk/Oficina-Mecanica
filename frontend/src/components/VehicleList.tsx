@@ -23,7 +23,7 @@ export default function VehicleList({
                     <p> Placa: {service.plate} </p>
                 </div>
             )) : (
-                <p className="opacity-50"><i> Nenhum serviço encontrado </i></p>
+                <p className="opacity-50"><i> Nenhum veículo encontrado </i></p>
             )}
         </div>
     );
