@@ -19,7 +19,14 @@ export class ClientsService {
 
   async findOne(id: number): Promise<ClientEntity> {
     return await tryCatch(async () => {
-      return await this.repository.findOne({ where: { id } });
+      return await this.repository.findOne({
+        where: { id },
+        relations: {
+          vehicles: {
+            services: true
+          }
+        }
+      });
     }, `Erro ao buscar cliente ${id}`);
   }
 }
