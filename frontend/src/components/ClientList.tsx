@@ -3,17 +3,19 @@
 import { use } from "react";
 import ClientCard from "./ClientCard";
 
+interface Client {
+    id: number,
+    name: string
+}
+
 interface ClientListProps {
-    clients: Promise<Array<{
-        id: number,
-        name: string
-    }>>
+    clients: Promise<Array<Client>> | Array<Client>
 }
 
 export default function ClientList({
     clients
 }: ClientListProps) {
-    const loadedClients = use(clients);
+    const loadedClients = clients instanceof Promise ? use(clients) : clients;
 
     return (
         <div className="flex items-center justify-center flex-wrap gap-[25px]">
