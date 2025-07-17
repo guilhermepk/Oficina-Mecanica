@@ -2,18 +2,20 @@
 
 import { use } from "react";
 
+interface Vehicle {
+    id: number,
+    plate: string,
+    model: string
+}
+
 interface VehicleListProps {
-    vehicles: Promise<Array<{
-        id: number,
-        plate: string,
-        model: string
-    }>>
+    vehicles: Promise<Array<Vehicle>> | Array<Vehicle>
 }
 
 export default function VehicleList({
     vehicles
 }: VehicleListProps) {
-    const loadedVehicles = use(vehicles);
+    const loadedVehicles = vehicles instanceof Promise ? use(vehicles) : vehicles;
 
     return (
         <div className="flex items-center justify-center flex-wrap gap-[25px]">
